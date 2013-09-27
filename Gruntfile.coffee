@@ -23,9 +23,9 @@ module.exports = (grunt) ->
         #
 
         stylus:
-            compile:
+            server:
                 files:
-                    '.tmp/styles/app.css' : ['<%= yeoman.app %>/styles/*.styl']
+                    '.tmp/styles/main.css' : ['<%= yeoman.app %>/styles/*.styl']
 
         ## CONCAT (for build only - else useminPrepare - or not? Might not be used anymore...)
         #
@@ -62,41 +62,32 @@ module.exports = (grunt) ->
                 src: '<%= yeoman.app %>/index.html'
                 dest : '<%= yeoman.dist %>'
 
-
-        ## REQUIREJS
-        #
-
-        # requirejs:
-        #     app:
-        #         options:
-        #             baseUrl        : '.tmp/js/'
-        #             mainConfigFile : '.tmp/js/app.js'
-        #             name           : 'app'
-        #             out            : 'dist/rebl.js'
-        #             optimize       : 'uglify2'
-        #             findNestedDependencies: true
-        #             paths:
-        #                 radio  : '../../<%= yeoman.app %>/components/radio/radio.min'
-        #                 jquery : '../../<%= yeoman.app %>/components/jquery/jquery'
-        #                 ip     : 'modules/inputparsers'
-
         ## WATCH
         #
 
         watch:
             styles:
                 files: ['<%= yeoman.app %>/styles/{,*/}*.styl']
-                tasks: ['stylus:compile']
+                tasks: ['stylus:server']
             livereload:
                 options:
                     livereload: '<%= connect.options.livereload %>'
                 files : [
                     '<%= yeoman.app %>/*.html',
-                    '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
+                    '{.tmp,<%= yeoman.app %>}/styles/*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/**/*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
                     'tests/{,*/}*.js',
                 ]
+
+        ## MOCHA
+        #
+
+        mocha:
+            all:
+                options:
+                    run: true
+                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
 
         ## SERVER
         #
@@ -139,6 +130,18 @@ module.exports = (grunt) ->
             server: '.tmp'
 
 
+    ## CONCURRENT
+    #
+
+    concurrent:
+        server: [
+            'stylus:server'
+        ]
+        dist: [
+            'stylus:dist'
+            'htmlmin'
+        ]
+
     #### TASKS ####
 
     ## Server
@@ -146,6 +149,7 @@ module.exports = (grunt) ->
 
     @registerTask 'server', (target) =>
         @task.run 'clean:server'
+        @task.run 'concurrent:server'
         @task.run 'connect:livereload'
         @task.run 'watch'
 
@@ -153,7 +157,9 @@ module.exports = (grunt) ->
     #
 
     @registerTask 'test', (target = 'all') =>
-        @task.run 'intern:client'
+        @task.run 'clean:server'
+        @task.run 'connect:test'
+        @task.run 'mocha'
 
     ## Build
     #
