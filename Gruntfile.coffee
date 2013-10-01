@@ -103,7 +103,8 @@ module.exports = (grunt) ->
                 options:
                     open: true
                     base: [
-                        '.tmp'
+                        '.tmp',
+                        'test',
                         '<%= yeoman.app %>'
                     ]
             test:

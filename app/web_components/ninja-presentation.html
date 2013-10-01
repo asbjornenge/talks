@@ -98,10 +98,31 @@
             // Make all works
             ninjapresentation.initialize = function () {
                 this.slides = document.getElementsByTagName('section');
+                // this.slides.forEach(function(slide) { ninjapresentation.prepareSlide(slide); })
                 this.referenciaSlides();
                 if (window.location.hash === '') window.location.hash = 1;
                 this.mostraSlide();
             };
+
+            // ninjapresentation.prepareSlide = function(slide) {
+            //     var src = slide.getAttribute('src');
+            //     if (src == null || src.split('.').length <= 0) return;
+            //     switch (src.split('.')[1]) {
+            //         case 'js':
+            //             ninjapresentation.external.js(src);
+            //             break;
+            //         case 'md':
+            //             console.log("found markdown")
+            //             break
+            //         default:
+            //             alert("Unsupported presentation section src \""+src+"\"");
+            //     }
+            // }
+
+            // ninjapresentation.external = {}
+            // ninjapresentation.external.js = function(src) {
+            //     console.log("grabbing "+src)
+            // }
 
             // Keydown callback for navigation
             document.onkeydown = function (e) {
