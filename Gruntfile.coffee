@@ -10,8 +10,8 @@ module.exports = (grunt) ->
     require('load-grunt-tasks')(grunt)
 
     config =
-        app: 'app'
-        dist: 'dist'
+        app  : 'app'
+        dist : 'dist'
 
     #### INITCONFIG ####
 
@@ -25,7 +25,8 @@ module.exports = (grunt) ->
         stylus:
             server:
                 files:
-                    '.tmp/styles/main.css' : ['<%= yeoman.app %>/styles/*.styl']
+                    '.tmp/styles/clouds.css'              : '<%= yeoman.app %>/styles/clouds.styl',
+                    '.tmp/jstooling/styles/jstooling.css' : '<%= yeoman.app %>/jstooling/styles/jstooling.styl'
 
         ## CONCAT (for build only - else useminPrepare - or not? Might not be used anymore...)
         #
@@ -67,16 +68,16 @@ module.exports = (grunt) ->
 
         watch:
             styles:
-                files: ['<%= yeoman.app %>/styles/{,*/}*.styl']
+                files: ['<%= yeoman.app %>/**/styles/{,*/}*.styl']
                 tasks: ['stylus:server']
             livereload:
                 options:
                     livereload: '<%= connect.options.livereload %>'
                 files : [
-                    '<%= yeoman.app %>/*.html',
-                    '{.tmp,<%= yeoman.app %>}/styles/*.css',
-                    '{.tmp,<%= yeoman.app %>}/scripts/**/*.js',
-                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                    '<%= yeoman.app %>/**/*.html',
+                    '{.tmp,<%= yeoman.app %>}/**/styles/*.css',
+                    '{.tmp,<%= yeoman.app %>}/**/scripts/**/*.js',
+                    '<%= yeoman.app %>/**/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
                     'tests/{,*/}*.js',
                 ]
 
@@ -130,17 +131,17 @@ module.exports = (grunt) ->
             server: '.tmp'
 
 
-    ## CONCURRENT
-    #
+        ## CONCURRENT
+        #
 
-    concurrent:
-        server: [
-            'stylus:server'
-        ]
-        dist: [
-            'stylus:dist'
-            'htmlmin'
-        ]
+        concurrent:
+            server: [
+                'stylus:server'
+            ]
+            dist: [
+                'stylus:dist'
+                'htmlmin'
+            ]
 
     #### TASKS ####
 
@@ -167,7 +168,7 @@ module.exports = (grunt) ->
     @registerTask 'build', (target = 'all') =>
         @task.run 'clean:server'
         @task.run 'clean:dist'
-        @task.run 'compass:dist'
+        @task.run 'stylus:dist'
         @task.run 'concat:dist'
         @task.run 'cssmin:dist'
         @task.run 'copy:dist'
