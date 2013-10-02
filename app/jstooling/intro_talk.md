@@ -1,3 +1,0 @@
-* scaffolding
-* manual tasks
-* dependecies

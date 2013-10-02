@@ -20,9 +20,18 @@ Make sure to serve ut the tests as part of your dev app. It's good for your work
 
 ## 2. Grunt
 
-## TDD
+## 3. Bower
+
+## 4. Requirejs
+
+## Other tips
+
+### TDD
 
 Test driven development ftw!! Remember to TEST modules!!
 
-## JSHint
+### JSHint
 
+### pub/sub
+
+### React
