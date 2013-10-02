@@ -3,20 +3,20 @@ define([], function() {
 
     function extract_javascript(src, callback) {
         require([src], function(data) {
-            callback(data);
+            callback(data,'javascript');
         })
     }
 
     function extract_markdown(src, callback) {
         require(['showdown','text!'+src], function(Showdown, data) {
             var converter = new Showdown.converter();
-            callback(converter.makeHtml(data));
+            callback(converter.makeHtml(data),'markdown');
         })
     }
 
     function extract_html(src, callback) {
         require(['text!'+src], function(data) {
-            callback(data);
+            callback(data,'html');
         })
     }
 
