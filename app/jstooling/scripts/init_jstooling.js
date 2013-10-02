@@ -9,11 +9,11 @@ require.config({
 
 require([
     'jquery',
-    'section_extractor'
-    ], function($, section_extractor) {
+    'section_src_extractor'
+    ], function($, section_src_extractor) {
         $(document).ready(function() {
             $('section').each(function(i,s) {
-                section_extractor.extract(s, function(html) {
+                section_src_extractor.extract(s, function(html) {
                     $(s).html(html);
                 })
             })
