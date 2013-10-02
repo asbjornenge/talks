@@ -1,2 +1,41 @@
 body
-    background-color red
+    position absolute
+    overflow hidden
+    top 0
+    left 0
+    right 0
+    bottom 0
+    margin 0
+    padding 0
+    font-size:0.6em;
+    padding: 10em 0;
+    background #c9dbe9
+    background -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%)
+    background -linear-gradient(top, #c9dbe9 0%, #fff 100%)
+    background -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%)
+
+.cloud
+    width: 20em; height:6em;
+    background: #fff;
+    border-radius: 20em;
+    -moz-border-radius: 20em;
+    -webkit-border-radius: 20em;
+    position: relative;
+
+.cloud:before, .cloud:after
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: 10em; height: 8em;
+    position: absolute; top: -1.5em; left: 1em;
+    border-radius: 10em;
+    -moz-border-radius: 10em;
+    -webkit-border-radius: 10em;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -webkit-box-shadow: #FFF 0 0 10em;
+
+.cloud:after
+    width: 12em; height: 12em;
+    top: -5.5em; left: auto; right: 1.5em;

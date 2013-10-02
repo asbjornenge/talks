@@ -1,0 +1,79 @@
+<polymer-element name='a-cloud' attributes='size'>
+    <template>
+        <div class="cloud"></div>
+        <style>
+            /*Time to finalise the cloud shape*/
+            .cloud {
+                display : none;
+                width: 20em; height:6em;
+                background: #fff;
+
+                border-radius: 20em;
+                -moz-border-radius: 20em;
+                -webkit-border-radius: 20em;
+                position: absolute;
+                z-index : 0;
+            }
+
+            .cloud:before, .cloud:after {
+              content: '';
+              position: absolute;
+              background: #fff;
+              width: 10em; height: 8em;
+              position: absolute; top: -1.5em; left: 1em;
+
+              border-radius: 10em;
+              -moz-border-radius: 10em;
+              -webkit-border-radius: 10em;
+
+              -webkit-transform: rotate(30deg);
+              transform: rotate(30deg);
+              -moz-transform: rotate(30deg);
+
+              -webkit-box-shadow: #FFF 0 0 10em;
+            }
+
+            .cloud:after {
+              width: 12em; height: 12em;
+              top: -5.5em; left: auto; right: 1.5em;
+            }
+        </style>
+    </template>
+    <script>
+        (function () {
+            'use strict';
+
+            Polymer('a-cloud', {
+                created: function () {
+                    var me     = this;
+                    var items  = this.impl.children;
+                    var speed  = Math.floor(Math.random() * 5)    + 30;
+                    var start  = Math.floor(Math.random() * 5000) + 1;
+                    var height = Math.floor(Math.random() * 6)    + 1;
+                    var width  = Math.floor(Math.random() * 20)   + 5;
+                    var top    = Math.floor(Math.random() * 200)  + 100;
+                    var a_name = 'moveclouds'+(Math.floor(Math.random() * 300) + 1);
+                    var anim   = "@-webkit-keyframes "+a_name+" {\
+                        100% {-webkit-transform: translateX(-100%) scale("+me.size+","+me.size+");}\
+                    }";
+                    var style  = document.createElement('style');
+                    style.type = 'text/css';
+                    style.appendChild(document.createTextNode(anim));
+                    document.getElementsByTagName('head')[0].appendChild(style);
+                    setTimeout(function() {
+                        items.forEach(function(cloud) {
+                            cloud.style.display = 'block';
+                            cloud.style.top     = top+'px';
+                            cloud.style.webkitTransform = 'translateX('+(document.body.clientWidth)+'px) scale('+me.size+','+me.size+')';
+                            cloud.style.webkitAnimation = a_name+' '+speed+'s linear infinite';
+                        });
+                    },start)
+                },
+                size: '0.5',
+                getClouds: function () {
+                    return this.impl.children;
+                }
+            });
+        }());
+    </script>
+</polymer-element>
