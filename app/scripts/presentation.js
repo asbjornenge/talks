@@ -3,20 +3,20 @@ define(['react'], function(React) {
 
     var Slide = React.createClass({
         render : function() {
-            var d = {
+            var css = {
                 display : this.props.current ? 'block' : 'none'
             }
             return (
-                <section style={d}>{this.props.src}</section>
+                <section style={css}>{this.props.src}</section>
             )
         }
     })
 
     var Presentation = React.createClass({
-        getInitialState: function() {
-            console.log("initing");
-            return { current : window.location.hash === "" ? 0 : window.location.hash.split('#')[1]};
-        },
+        // getInitialState: function() {
+        //     console.log("initing");
+        //     return { current : window.location.hash === "" ? 0 : window.location.hash.split('#')[1]};
+        // },
         componentWillMount : function() {
             console.log("mounting");
             document.onkeydown = function (e) {
@@ -34,9 +34,9 @@ define(['react'], function(React) {
             }.bind(this);
         },
         render : function() {
-            var current = this.state.current;
+            var current = this.state ? this.state.current : getLocationHash();
             var slides  = this.props.data.map(function (slide, index) {
-                var isCurrent = index === current ? true : false;
+                var isCurrent = index == current ? true : false;
                 return <Slide current={isCurrent} src={slide.src}></Slide>;
             });
             return (
@@ -47,12 +47,11 @@ define(['react'], function(React) {
         }
     })
 
-    function bindKeys() {
-
+    function getLocationHash() {
+        return window.location.hash === "" ? 0 : window.location.hash.split('#')[1];
     }
 
     function render(slides, target) {
-        bindKeys();
         React.renderComponent(<Presentation data={slides} />, target);
     }
 
