@@ -14,28 +14,37 @@ body
     background -linear-gradient(top, #c9dbe9 0%, #fff 100%)
     background -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%)
 
-.cloud
+.cloud {
+    display : none;
     width: 20em; height:6em;
     background: #fff;
+
     border-radius: 20em;
     -moz-border-radius: 20em;
     -webkit-border-radius: 20em;
-    position: relative;
-
-.cloud:before, .cloud:after
-    content: '';
     position: absolute;
-    background: #fff;
-    width: 10em; height: 8em;
-    position: absolute; top: -1.5em; left: 1em;
-    border-radius: 10em;
-    -moz-border-radius: 10em;
-    -webkit-border-radius: 10em;
-    -webkit-transform: rotate(30deg);
-    transform: rotate(30deg);
-    -moz-transform: rotate(30deg);
-    -webkit-box-shadow: #FFF 0 0 10em;
+    z-index : 10;
+}
 
-.cloud:after
-    width: 12em; height: 12em;
-    top: -5.5em; left: auto; right: 1.5em;
+.cloud:before, .cloud:after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  width: 10em; height: 8em;
+  position: absolute; top: -1.5em; left: 1em;
+
+  border-radius: 10em;
+  -moz-border-radius: 10em;
+  -webkit-border-radius: 10em;
+
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+
+  -webkit-box-shadow: #FFF 0 0 10em;
+}
+
+.cloud:after {
+  width: 12em; height: 12em;
+  top: -5.5em; left: auto; right: 1.5em;
+}

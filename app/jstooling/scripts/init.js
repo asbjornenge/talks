@@ -5,13 +5,13 @@ require.config({
         jquery         : '../bower_components/jquery/jquery',
         text           : '../bower_components/requirejs-text/text',
         showdown       : '../bower_components/showdown/compressed/showdown',
-        hightlight     : '../bower_components/highlightjs/highlight.pack',
+        highlight      : '../bower_components/highlightjs/highlight.pack',
         react          : '../bower_components/react/react',
         JSXTransformer : '../bower_components/react/JSXTransformer',
         jsx            : "../scripts/jsx"
     },
     shim : {
-      hightlight : {
+      highlight : {
             exports : 'hljs'
         },
         JSXTransformer: {
@@ -22,21 +22,16 @@ require.config({
 
 require([
     'jquery',
-    'section_src_extractor',
-    'hightlight',
-    'jsx!../scripts/presentation'
-    ], function($, section_src_extractor, hljs, pres) {
+    'jsx!../scripts/presentation',
+    'jsx!../scripts/cloud'
+    ], function($, pres, clouds) {
         $(document).ready(function() {
             pres.render([
                 {src:'intro_speaker.html'},
-                {src:'intro_talk.html'}
-            ],$('body')[0])
-            // $('section').each(function(i,s) {
-            //     section_src_extractor.extract(s, function(html,extractor) {
-            //         $(s).html(html);
-            //         $(s).addClass(extractor);
-            //         $(s).find('pre code').each(function(i, e) {console.log(e);hljs.highlightBlock(e)});
-            //     })
-            // })
+                {src:'intro_talk.html'},
+                {src:'yo_intro.html'}
+            ], $('#presentation')[0]);
+            clouds.scatter($('#clouds')[0]);
         });
 });
+
