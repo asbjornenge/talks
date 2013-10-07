@@ -31,8 +31,9 @@ require([
                 {src:'yo.html'},
                 {src:'grunt.html'},
                 {src:'bower.html'},
+                {src:'stylus.html'},
                 {src:'requirejs.html'},
-                {src:'stylus.html'}
+                {src:'react.html'}
             ], $('#presentation')[0]);
             clouds.scatter($('#clouds')[0]);
         });
