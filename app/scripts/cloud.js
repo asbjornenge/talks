@@ -28,12 +28,11 @@ define(['react'], function(React) {
     var Cloud = React.createClass({
         render : function() {
             var size   = this.props.size;
-            // var size   = Math.random().toFixed(2);
             var speed  = Math.floor(Math.random() * 5)    + 30;
             var start  = Math.floor(Math.random() * 5000) + 1;
             var height = Math.floor(Math.random() * 6)    + 1;
             var width  = Math.floor(Math.random() * 20)   + 5;
-            var top    = Math.floor(Math.random() * 200)  + 100;
+            var top    = Math.floor(Math.random() * 150)  + 100;
             var a_name = 'moveclouds'+(Math.floor(Math.random() * 300) + 1);
             createCloudStyle(a_name, size);
             var css    = {

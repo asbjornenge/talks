@@ -28,8 +28,7 @@ require([
         $(document).ready(function() {
             pres.render([
                 {src:'intro_speaker.html'},
-                {src:'intro_talk.html'},
-                {src:'yo_intro.html'}
+                {src:'yo.html'}
             ], $('#presentation')[0]);
             clouds.scatter($('#clouds')[0]);
         });
