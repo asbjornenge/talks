@@ -1,0 +1,54 @@
+
+<style type="text/css">
+
+    #requirejs_wrapper {
+        text-align: center;
+    }
+
+    #requirejs_wrapper img {
+        position     : absolute;
+        top          : 100px;
+        left         : 50%;
+        width        : 400px;
+        margin-left  : -200px;
+    }
+
+    #requirejs_wrapper .tagline {
+        margin-top : 400px;
+        text-align: center;
+        color : #2e87dd;
+    }
+
+    #requirejs_wrapper pre {
+        text-align: left;
+        width : 650px;
+        margin : auto;
+        margin-top : -30px;
+    }
+
+    #requirejs_wrapper .codewrapper {
+        position : absolute;
+        z-index : -1;
+        display: block;
+        width : 100%;
+        height: 225px;
+        padding-top : 0px;
+    }
+
+</style>
+
+<div id="requirejs_wrapper">
+    <img src="images/requirejs-logo.png" />
+    <h3 class="tagline">javascript modules</h3>
+    <div class="codewrapper">
+        <pre>
+            <code class="javascript">
+define([], function() {
+    return {
+        module : function() {}
+    }
+})
+            </code>
+        </pre>
+    </div>
+</div>

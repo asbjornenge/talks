@@ -30,7 +30,9 @@ require([
                 {src:'intro_speaker.html'},
                 {src:'yo.html'},
                 {src:'grunt.html'},
-                {src:'bower.html'}
+                {src:'bower.html'},
+                {src:'requirejs.html'},
+                {src:'stylus.html'}
             ], $('#presentation')[0]);
             clouds.scatter($('#clouds')[0]);
         });
