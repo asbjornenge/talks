@@ -28,7 +28,9 @@ require([
         $(document).ready(function() {
             pres.render([
                 {src:'intro_speaker.html'},
-                {src:'yo.html'}
+                {src:'yo.html'},
+                {src:'grunt.html'},
+                {src:'bower.html'}
             ], $('#presentation')[0]);
             clouds.scatter($('#clouds')[0]);
         });
