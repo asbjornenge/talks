@@ -19,15 +19,36 @@
         color : #EF5734;
     }
 
+    #bower_wrapper h1 {
+        position: absolute;
+        text-shadow: none;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color : #EF5734;
+        width : 400px;
+        left : 50%;
+        margin-left: -200px;
+        top : 380px;
+        font-size : 2.2em;
+    }
+
+    #bower_wrapper ul {
+        list-style: none;
+    }
 
 </style>
 
 <div id="bower_wrapper">
     <img src="images/bower-logo.png" />
+    <h1>Bower</h1>
     <h3 class="tagline">client side dependencies</h3>
     <pre>
         <code class="bash">
 $ bower install jquery
         </code>
     </pre>
+    <ul>
+        <li>dependency resolution</li>
+        <li>runs over Git</li>
+        <li>package agnostic</li>
+    </ul>
 </div>

@@ -7,7 +7,7 @@
 
     #grunt_wrapper img {
         position     : absolute;
-        top          : 100px;
+        top          : 90px;
         left         : 50%;
         width        : 400px;
         margin-left  : -200px;
@@ -19,15 +19,25 @@
         color : #453015;
     }
 
+    #grunt_wrapper ul {
+        list-style: none;
+    }
 
 </style>
 
 <div id="grunt_wrapper">
     <img src="images/grunt-logo.png" />
-    <h3 class="tagline">handles tasks</h3>
+    <h3 class="tagline">runs tasks</h3>
     <pre>
         <code class="bash">
 $ grunt build
         </code>
     </pre>
+    <ul>
+        <li>concat, minify, version</li>
+        <li>preprocess</li>
+        <li>(coffee, stylus)</li>
+        <li>server, livereload</li>
+        <li>tests</li>
+    </ul>
 </div>

@@ -9,13 +9,12 @@
         position     : absolute;
         top          : 100px;
         left         : 50%;
-        width        : 400px;
-        margin-left  : -200px;
+        width        : 350px;
+        margin-left  : -175px;
     }
 
     #react_wrapper .tagline {
-        margin-top : 400px;
-        text-align: center;
+        margin-top : 320px;
         color : #61dafb;
     }
 
@@ -31,10 +30,14 @@
         z-index : -1;
         display: block;
         width : 100%;
-        height: 370px;
+        height: 310px;
         padding-top : 0px;
     }
 
+    #react_wrapper ul {
+        list-style : none;
+        margin-top : 450px;
+    }
 
 </style>
 
@@ -55,4 +58,9 @@ React.renderComponent(&lt;HelloMessage name="John" />, mountNode);
         </code>
     </pre>
     </div>
+    <ul>
+        <li>virtual dom</li>
+        <li>efficient mod diffing</li>
+        <li>batched DOM operations</li>
+    </ul>
 </div>

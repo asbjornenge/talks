@@ -106,7 +106,8 @@ module.exports = (grunt) ->
                         '.tmp',
                         'test',
                         '<%= yeoman.app %>'
-                    ]
+                    ],
+                    keepalive: true
             test:
                 options:
                     base: [
